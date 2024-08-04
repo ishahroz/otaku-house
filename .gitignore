@@ -5,3 +5,10 @@ venv
 
 # For discarding PyCharm files
 .idea
+
+# Ignore Python cache directories and compiled files
+__pycache__/
+*.pyc
+
+# Ignore macOS .DS_Store files in all directories
+**/.DS_Store
