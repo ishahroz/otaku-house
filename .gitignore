@@ -12,3 +12,6 @@ __pycache__/
 
 # Ignore macOS .DS_Store files in all directories
 **/.DS_Store
+
+# Ignore node_modules directories
+frontend/node_modules/
