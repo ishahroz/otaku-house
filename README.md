@@ -14,6 +14,12 @@
 
 ```
 
+### Admin Credentials
+```text
+Username: admin@test.com
+Password: admin
+```
+
 ### 📷 Project Screenshots
 
 ![ss](./ss/ss1.png)
