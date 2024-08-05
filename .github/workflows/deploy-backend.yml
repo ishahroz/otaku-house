@@ -20,7 +20,7 @@ jobs:
         id: deploy
         run: |
           aws deploy create-deployment \
-            --application-name otaku-house-django \
+            --application-name otaku-house-django-dep-app \
             --deployment-group-name otaku-house-django-dep-group \
             --deployment-config-name CodeDeployDefault.AllAtOnce \
             --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
