@@ -26,6 +26,8 @@ import {
   PRODUCT_TOP_REQUEST,
 } from "../constants/productConstants";
 
+import { DJANGO_PROD_API_ALB_URL } from "../constants/urls";
+
 /* ACTION CREATOR USED IN HomeScreen COMPONENT */
 export const listProducts =
   (keyword = "") =>
@@ -35,7 +37,7 @@ export const listProducts =
         type: PRODUCT_LIST_REQUEST,
       });
 
-      const { data } = await axios.get(`/api/products${keyword}`);
+      const { data } = await axios.get(`${DJANGO_PROD_API_ALB_URL}/api/products${keyword}`);
 
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
@@ -59,7 +61,7 @@ export const listProductDetails = (id) => async (dispatch) => {
       type: PRODUCT_DETAILS_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await axios.get(`${DJANGO_PROD_API_ALB_URL}/api/products/${id}`);
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -97,7 +99,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
 
     /* MAKING API CALL TO DELETE PRODUCT */
     // eslint-disable-next-line
-    const { data } = await axios.delete(`/api/products/delete/${id}/`, config);
+    const { data } = await axios.delete(`${DJANGO_PROD_API_ALB_URL}/api/products/delete/${id}/`, config);
 
     /* IF GET REQUEST SUCCESSFULL WE DISPATCH & SEND THE PAYLOAD TO OUR REDUCER */
     dispatch({
@@ -134,7 +136,7 @@ export const createProduct = () => async (dispatch, getState) => {
     };
 
     /* MAKING API CALL TO CREATE PRODUCT */
-    const { data } = await axios.post(`/api/products/create/`, {}, config);
+    const { data } = await axios.post(`${DJANGO_PROD_API_ALB_URL}/api/products/create/`, {}, config);
 
     /* IF POST REQUEST SUCCESSFULL WE DISPATCH & SEND THE PAYLOAD TO OUR REDUCER */
     dispatch({
@@ -173,7 +175,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
 
     /* MAKING API CALL TO UPDATE PRODUCT */
     const { data } = await axios.put(
-      `/api/products/update/${product._id}/`,
+      `${DJANGO_PROD_API_ALB_URL}/api/products/update/${product._id}/`,
       product,
       config
     );
@@ -222,7 +224,7 @@ export const createProductReview =
 
       /* MAKING API CALL TO CREATE PRODUCT REVIEW */
       const { data } = await axios.post(
-        `/api/products/${productId}/reviews/`,
+        `${DJANGO_PROD_API_ALB_URL}/api/products/${productId}/reviews/`,
         review,
         config
       );
@@ -250,7 +252,7 @@ export const listTopProducts = () => async (dispatch) => {
       type: PRODUCT_TOP_REQUEST,
     });
 
-    const { data } = await axios.get(`/api/products/top/`);
+    const { data } = await axios.get(`${DJANGO_PROD_API_ALB_URL}/api/products/top/`);
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
