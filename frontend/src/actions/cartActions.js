@@ -9,12 +9,14 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from "../constants/cartConstants";
 
+import { DJANGO_PROD_API_ALB_URL } from "../constants/urls";
+
 /* ACTION CREATOR USED IN CartScreen COMPONENT */
 
 /* FOR ADDING PRODUCTS TO CART */
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   // FETCHING PRODUCT DATA
-  const { data } = await axios.get(`/api/products/${id}`);
+  const { data } = await axios.get(`${DJANGO_PROD_API_ALB_URL}/api/products/${id}`);
 
   dispatch({
     type: CART_ADD_ITEM,
