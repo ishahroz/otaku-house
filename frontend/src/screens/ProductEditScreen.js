@@ -23,6 +23,8 @@ import { listProductDetails, updateProduct } from "../actions/productActions";
 /* ACTION TYPES */
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
+import { DJANGO_PROD_API_ALB_URL } from "../constants/urls";
+
 function ProductEditScreen({ match, history }) {
   /* GETTING USER ID FROM URL */
   const productId = match.params.id;
@@ -107,7 +109,7 @@ function ProductEditScreen({ match, history }) {
       };
 
       const { data } = await axios.post(
-        "/api/products/upload/",
+        `${DJANGO_PROD_API_ALB_URL}/api/products/upload/`,
         formData,
         config
       );
